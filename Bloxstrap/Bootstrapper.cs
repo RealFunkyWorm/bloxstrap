@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using Microsoft.Win32;
 
 using Bloxstrap.Integrations;
+using Bloxstrap.Resources;
 
 namespace Bloxstrap
 {
@@ -256,25 +257,10 @@ namespace Bloxstrap
 
             if (clientVersion.IsBehindDefaultChannel)
             {
-                MessageBoxResult action = App.Settings.Prop.ChannelChangeMode switch
-                {
-                    ChannelChangeMode.Prompt => Frontend.ShowMessageBox(
-                        string.Format(Resources.Strings.Bootstrapper_ChannelOutOfDate, App.Settings.Prop.Channel, RobloxDeployment.DefaultChannel),
-                        MessageBoxImage.Warning,
-                        MessageBoxButton.YesNo
-                    ),
-                    ChannelChangeMode.Automatic => MessageBoxResult.Yes,
-                    ChannelChangeMode.Ignore => MessageBoxResult.No,
-                    _ => MessageBoxResult.None
-                };
+                App.Logger.WriteLine(LOG_IDENT, $"Changed Roblox channel from {App.Settings.Prop.Channel} to {RobloxDeployment.DefaultChannel}");
 
-                if (action == MessageBoxResult.Yes)
-                {
-                    App.Logger.WriteLine("Bootstrapper::CheckLatestVersion", $"Changed Roblox channel from {App.Settings.Prop.Channel} to {RobloxDeployment.DefaultChannel}");
-
-                    App.Settings.Prop.Channel = RobloxDeployment.DefaultChannel;
-                    clientVersion = await RobloxDeployment.GetInfo(App.Settings.Prop.Channel, binaryType: binaryType);
-                }
+                App.Settings.Prop.Channel = RobloxDeployment.DefaultChannel;
+                clientVersion = await RobloxDeployment.GetInfo(App.Settings.Prop.Channel, binaryType: binaryType);
             }
 
             _latestVersionGuid = clientVersion.VersionGuid;
@@ -287,13 +273,6 @@ namespace Bloxstrap
             const string LOG_IDENT = "Bootstrapper::StartRoblox";
 
             SetStatus(Resources.Strings.Bootstrapper_Status_Starting);
-
-            if (_launchCommandLine == "--app" && App.Settings.Prop.UseDisableAppPatch)
-            {
-                Utilities.ShellExecute("https://www.roblox.com/games");
-                Dialog?.CloseBootstrapper();
-                return;
-            }
 
             if (!File.Exists(Path.Combine(Paths.System, "mfplat.dll")))
             {
@@ -313,7 +292,11 @@ namespace Bloxstrap
             {
                 _launchCommandLine = _launchCommandLine.Replace("LAUNCHTIMEPLACEHOLDER", DateTimeOffset.Now.ToUnixTimeMilliseconds().ToString());
 
-                _launchCommandLine += " -channel ";
+
+                if (_launchCommandLine.StartsWith("roblox-player:1"))
+                    _launchCommandLine += "+channel:";
+                else
+                    _launchCommandLine += " -channel ";
 
                 if (App.Settings.Prop.Channel.ToLowerInvariant() == RobloxDeployment.DefaultChannel.ToLowerInvariant())
                     _launchCommandLine += "production";
@@ -367,7 +350,7 @@ namespace Bloxstrap
 
             if (App.Settings.Prop.EnableActivityTracking)
             {
-                activityWatcher = new();
+                activityWatcher = new(gameClientPid);
                 shouldWait = true;
 
                 App.NotifyIcon?.SetActivityWatcher(activityWatcher);
@@ -415,7 +398,7 @@ namespace Bloxstrap
 
             App.Logger.WriteLine(LOG_IDENT, "Waiting for Roblox to close");
 
-            while (Process.GetProcesses().Any(x => x.Id == gameClientPid))
+            while (Utilities.GetProcessesSafe().Any(x => x.Id == gameClientPid))
                 await Task.Delay(1000);
 
             App.Logger.WriteLine(LOG_IDENT, $"Roblox has exited");
@@ -1132,8 +1115,6 @@ namespace Bloxstrap
             if (!Directory.Exists(Paths.Modifications))
                 Directory.CreateDirectory(Paths.Modifications);
 
-            bool appDisabled = App.Settings.Prop.UseDisableAppPatch && !_launchCommandLine.Contains("--deeplink");
-
             // cursors
             await CheckModPreset(App.Settings.Prop.CursorType == CursorType.From2006, new Dictionary<string, string>
             {
@@ -1162,8 +1143,7 @@ namespace Bloxstrap
             });
 
             // Mobile.rbxl
-            await CheckModPreset(appDisabled, @"ExtraContent\places\Mobile.rbxl", "");
-            await CheckModPreset(App.Settings.Prop.UseOldAvatarBackground && !appDisabled, @"ExtraContent\places\Mobile.rbxl", "OldAvatarBackground.rbxl");
+            await CheckModPreset(App.Settings.Prop.UseOldAvatarBackground, @"ExtraContent\places\Mobile.rbxl", "OldAvatarBackground.rbxl");
 
             // emoji presets are downloaded remotely from github due to how large they are
             string contentFonts = Path.Combine(Paths.Modifications, "content\\fonts");
@@ -1185,9 +1165,20 @@ namespace Bloxstrap
 
                 Directory.CreateDirectory(contentFonts);
 
-                var response = await App.HttpClient.GetAsync(App.Settings.Prop.EmojiType.GetUrl());
-                await using var fileStream = new FileStream(emojiFontLocation, FileMode.CreateNew);
-                await response.Content.CopyToAsync(fileStream);
+                try
+                {
+                    var response = await App.HttpClient.GetAsync(App.Settings.Prop.EmojiType.GetUrl());
+                    response.EnsureSuccessStatusCode();
+                    await using var fileStream = new FileStream(emojiFontLocation, FileMode.CreateNew);
+                    await response.Content.CopyToAsync(fileStream);
+                }
+                catch (HttpRequestException ex)
+                {
+                    App.Logger.WriteLine(LOG_IDENT, $"Failed to fetch emoji preset from Github");
+                    App.Logger.WriteException(LOG_IDENT, ex);
+                    Frontend.ShowMessageBox(string.Format(Strings.Bootstrapper_EmojiPresetFetchFailed, App.Settings.Prop.EmojiType), MessageBoxImage.Warning);
+                    App.Settings.Prop.EmojiType = EmojiType.Default;
+                }
             }
 
             // check custom font mod
@@ -1198,7 +1189,7 @@ namespace Bloxstrap
             if (App.IsFirstRun && App.CustomFontLocation is not null)
             {
                 Directory.CreateDirectory(Path.GetDirectoryName(Paths.CustomFont)!);
-                File.Copy(App.CustomFontLocation, Paths.CustomFont);
+                File.Copy(App.CustomFontLocation, Paths.CustomFont, true);
             }
 
             if (File.Exists(Paths.CustomFont))

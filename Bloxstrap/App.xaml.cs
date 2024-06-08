@@ -107,7 +107,7 @@ namespace Bloxstrap
             Terminate();
         }
 
-        protected override void OnStartup(StartupEventArgs e)
+        protected override async void OnStartup(StartupEventArgs e)
         {
             const string LOG_IDENT = "App::OnStartup";
             
@@ -126,17 +126,45 @@ namespace Bloxstrap
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
 
-            LaunchSettings = new LaunchSettings(e.Args);
-
-            HttpClient.Timeout = TimeSpan.FromSeconds(30);
-            HttpClient.DefaultRequestHeaders.Add("User-Agent", ProjectRepository);
-            
             using (var checker = new InstallChecker())
             {
                 checker.Check();
             }
 
             Paths.Initialize(BaseDirectory);
+
+            // we shouldn't save settings on the first run until the first installation is finished,
+            // just in case the user decides to cancel the install
+            if (!IsFirstRun)
+            {
+                Settings.Load();
+                State.Load();
+                FastFlags.Load();
+            }
+
+            LaunchSettings = new LaunchSettings(e.Args);
+
+            HttpClient.Timeout = TimeSpan.FromSeconds(30);
+            HttpClient.DefaultRequestHeaders.Add("User-Agent", ProjectRepository);
+
+            // TEMPORARY FILL-IN FOR NEW FUNCTIONALITY
+            // REMOVE WHEN LARGER REFACTORING IS DONE
+            await RobloxDeployment.InitializeConnectivity();
+
+            // disallow running as administrator except for uninstallation
+            if (Utilities.IsAdministrator && !LaunchSettings.IsUninstall)
+            {
+                Frontend.ShowMessageBox(Bloxstrap.Resources.Strings.Bootstrapper_RanInAdminMode, MessageBoxImage.Error);
+                Terminate(ErrorCode.ERROR_INVALID_FUNCTION);
+                return;
+            }
+
+            if (LaunchSettings.IsUninstall && IsFirstRun)
+            {
+                Frontend.ShowMessageBox(Bloxstrap.Resources.Strings.Bootstrapper_FirstRunUninstall, MessageBoxImage.Error);
+                Terminate(ErrorCode.ERROR_INVALID_FUNCTION);
+                return;
+            }
 
             // we shouldn't save settings on the first run until the first installation is finished,
             // just in case the user decides to cancel the install
@@ -149,10 +177,6 @@ namespace Bloxstrap
                     Logger.WriteLine(LOG_IDENT, "Possible duplicate launch detected, terminating.");
                     Terminate();
                 }
-
-                Settings.Load();
-                State.Load();
-                FastFlags.Load();
             }
 
             if (!LaunchSettings.IsUninstall && !LaunchSettings.IsMenuLaunch)
@@ -165,7 +189,7 @@ namespace Bloxstrap
 
             if (LaunchSettings.IsMenuLaunch)
             {
-                Process? menuProcess = Process.GetProcesses().Where(x => x.MainWindowTitle == $"{ProjectName} Menu").FirstOrDefault();
+                Process? menuProcess = Utilities.GetProcessesSafe().Where(x => x.MainWindowTitle == $"{ProjectName} Menu").FirstOrDefault();
 
                 if (menuProcess is not null)
                 {
@@ -175,13 +199,8 @@ namespace Bloxstrap
                 }
                 else
                 {
-                    if (Process.GetProcessesByName(ProjectName).Length > 1 && !LaunchSettings.IsQuiet)
-                        Frontend.ShowMessageBox(
-                            Bloxstrap.Resources.Strings.Menu_AlreadyRunning, 
-                            MessageBoxImage.Information
-                        );
-
-                    Frontend.ShowMenu();
+                    bool showAlreadyRunningWarning = Process.GetProcessesByName(ProjectName).Length > 1 && !LaunchSettings.IsQuiet;
+                    Frontend.ShowMenu(showAlreadyRunningWarning);
                 }
 
                 StartupFinished();
@@ -202,28 +221,6 @@ namespace Bloxstrap
                 dialog = Settings.Prop.BootstrapperStyle.GetNew();
                 bootstrapper.Dialog = dialog;
                 dialog.Bootstrapper = bootstrapper;
-            }
-
-            // handle roblox singleton mutex for multi-instance launching
-            // note we're handling it here in the main thread and NOT in the
-            // bootstrapper as handling mutexes in async contexts suuuuuucks
-
-            Mutex? singletonMutex = null;
-
-            if (Settings.Prop.MultiInstanceLaunching && LaunchSettings.RobloxLaunchMode == LaunchMode.Player)
-            {
-                Logger.WriteLine(LOG_IDENT, "Creating singleton mutex");
-
-                try
-                {
-                    Mutex.OpenExisting("ROBLOX_singletonMutex");
-                    Logger.WriteLine(LOG_IDENT, "Warning - singleton mutex already exists!");
-                }
-                catch
-                {
-                    // create the singleton mutex before the game client does
-                    singletonMutex = new Mutex(true, "ROBLOX_singletonMutex");
-                }
             }
 
             Task bootstrapperTask = Task.Run(async () => await bootstrapper.Run()).ContinueWith(t =>
@@ -260,16 +257,6 @@ namespace Bloxstrap
             Logger.WriteLine(LOG_IDENT, "Waiting for bootstrapper task to finish");
 
             bootstrapperTask.Wait();
-
-            if (singletonMutex is not null)
-            {
-                Logger.WriteLine(LOG_IDENT, "We have singleton mutex ownership! Running in background until all Roblox processes are closed");
-
-                // we've got ownership of the roblox singleton mutex!
-                // if we stop running, everything will screw up once any more roblox instances launched
-                while (Process.GetProcessesByName("RobloxPlayerBeta").Any())
-                    Thread.Sleep(5000);
-            }
 
             StartupFinished();
         }

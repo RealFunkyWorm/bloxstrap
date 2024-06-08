@@ -134,6 +134,24 @@ namespace Bloxstrap.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Could not apply the {0} emoji mod preset because of a network error. To try again, please reconfigure the option in the Bloxstrap Menu..
+        /// </summary>
+        public static string Bootstrapper_EmojiPresetFetchFailed {
+            get {
+                return ResourceManager.GetString("Bootstrapper.EmojiPresetFetchFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You must first install Bloxstrap before uninstalling..
+        /// </summary>
+        public static string Bootstrapper_FirstRunUninstall {
+            get {
+                return ResourceManager.GetString("Bootstrapper.FirstRunUninstall", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Roblox has now finished rolling out the new game client update, featuring 64-bit support and the Hyperion anticheat. ReShade does not work with this update, and so it has now been disabled and removed from Bloxstrap.
         ///
         ///Your ReShade configuration files will still be saved, and you can locate them by opening the folder where Bloxstrap is installed to, and navigating to the Integrations folder. You can choose to delete these if you want..
@@ -150,6 +168,15 @@ namespace Bloxstrap.Resources {
         public static string Bootstrapper_NotEnoughSpace {
             get {
                 return ResourceManager.GetString("Bootstrapper.NotEnoughSpace", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bloxstrap does not support running in administrator mode. Relaunch or reinstall Bloxstrap with lower privileges..
+        /// </summary>
+        public static string Bootstrapper_RanInAdminMode {
+            get {
+                return ResourceManager.GetString("Bootstrapper.RanInAdminMode", resourceCulture);
             }
         }
         
@@ -1462,11 +1489,20 @@ namespace Bloxstrap.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bloxstrap is currently running, likely as a background Roblox process. Please note that not all your changes will immediately apply until you close all currently open Roblox instances..
+        ///   Looks up a localized string similar to Please note that not all your changes will immediately apply until you close all currently open Roblox instances..
         /// </summary>
-        public static string Menu_AlreadyRunning {
+        public static string Menu_AlreadyRunning_Caption {
             get {
-                return ResourceManager.GetString("Menu.AlreadyRunning", resourceCulture);
+                return ResourceManager.GetString("Menu.AlreadyRunning.Caption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bloxstrap is already running.
+        /// </summary>
+        public static string Menu_AlreadyRunning_Title {
+            get {
+                return ResourceManager.GetString("Menu.AlreadyRunning.Title", resourceCulture);
             }
         }
         
@@ -1827,6 +1863,24 @@ namespace Bloxstrap.Resources {
         public static string Menu_FastFlagEditor_Description {
             get {
                 return ResourceManager.GetString("Menu.FastFlagEditor.Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Export JSON.
+        /// </summary>
+        public static string Menu_FastFlagEditor_ExportJson {
+            get {
+                return ResourceManager.GetString("Menu.FastFlagEditor.ExportJson", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copied JSON to clipboard..
+        /// </summary>
+        public static string Menu_FastFlagEditor_JsonCopiedToClipboard {
+            get {
+                return ResourceManager.GetString("Menu.FastFlagEditor.JsonCopiedToClipboard", resourceCulture);
             }
         }
         
@@ -2395,6 +2449,24 @@ namespace Bloxstrap.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Roblox will fully close when you leave a game instead of dropping you back into the app..
+        /// </summary>
+        public static string Menu_Integrations_DesktopApp_Description {
+            get {
+                return ResourceManager.GetString("Menu.Integrations.DesktopApp.Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Don&apos;t exit to desktop app.
+        /// </summary>
+        public static string Menu_Integrations_DesktopApp_Title {
+            get {
+                return ResourceManager.GetString("Menu.Integrations.DesktopApp.Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Allows for Bloxstrap to detect what Roblox game you&apos;re playing. Certain features may require this..
         /// </summary>
         public static string Menu_Integrations_EnableActivityTracking_Description {
@@ -2512,6 +2584,15 @@ namespace Bloxstrap.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The file you have chosen does not appear to be a valid font file..
+        /// </summary>
+        public static string Menu_Mods_Misc_CustomFont_Invalid {
+            get {
+                return ResourceManager.GetString("Menu.Mods.Misc.CustomFont.Invalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Remove applied font.
         /// </summary>
         public static string Menu_Mods_Misc_CustomFont_Remove {
@@ -2571,24 +2652,6 @@ namespace Bloxstrap.Resources {
         public static string Menu_Mods_OpenModsFolder_Title {
             get {
                 return ResourceManager.GetString("Menu.Mods.OpenModsFolder.Title", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Stops the desktop app from showing, especially when you leave a game..
-        /// </summary>
-        public static string Menu_Mods_Presets_DisableDesktopApp_Description {
-            get {
-                return ResourceManager.GetString("Menu.Mods.Presets.DisableDesktopApp.Description", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Disable desktop app.
-        /// </summary>
-        public static string Menu_Mods_Presets_DisableDesktopApp_Title {
-            get {
-                return ResourceManager.GetString("Menu.Mods.Presets.DisableDesktopApp.Title", resourceCulture);
             }
         }
         
@@ -2742,6 +2805,24 @@ namespace Bloxstrap.Resources {
         public static string Menu_Save {
             get {
                 return ResourceManager.GetString("Menu.Save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Changes will take effect the next time you launch Roblox..
+        /// </summary>
+        public static string Menu_SettingsSaved_Message {
+            get {
+                return ResourceManager.GetString("Menu.SettingsSaved.Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Settings saved!.
+        /// </summary>
+        public static string Menu_SettingsSaved_Title {
+            get {
+                return ResourceManager.GetString("Menu.SettingsSaved.Title", resourceCulture);
             }
         }
         

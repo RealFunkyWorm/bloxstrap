@@ -142,6 +142,12 @@ Would you like to switch to the default channel ({1})?</value>
   <data name="Bootstrapper.DeeplinkTempEnabled" xml:space="preserve">
     <value>Roblox was launched via a deeplink, however the desktop app is required for deeplink launching to work. Because you've opted to disable the desktop app, it will temporarily be re-enabled for this launch only.</value>
   </data>
+  <data name="Bootstrapper.EmojiPresetFetchFailed" xml:space="preserve">
+    <value>Could not apply the {0} emoji mod preset because of a network error. To try again, please reconfigure the option in the Bloxstrap Menu.</value>
+  </data>
+  <data name="Bootstrapper.FirstRunUninstall" xml:space="preserve">
+    <value>You must first install Bloxstrap before uninstalling.</value>
+  </data>
   <data name="Bootstrapper.HyperionUpdateInfo" xml:space="preserve">
     <value>Roblox has now finished rolling out the new game client update, featuring 64-bit support and the Hyperion anticheat. ReShade does not work with this update, and so it has now been disabled and removed from Bloxstrap.
 
@@ -149,6 +155,9 @@ Your ReShade configuration files will still be saved, and you can locate them by
   </data>
   <data name="Bootstrapper.NotEnoughSpace" xml:space="preserve">
     <value>Bloxstrap does not have enough disk space to download and install Roblox. Please free up some disk space and try again.</value>
+  </data>
+  <data name="Bootstrapper.RanInAdminMode" xml:space="preserve">
+    <value>Bloxstrap does not support running in administrator mode. Relaunch or reinstall Bloxstrap with lower privileges.</value>
   </data>
   <data name="Bootstrapper.Status.ApplyingModifications" xml:space="preserve">
     <value>Applying Roblox modifications...</value>
@@ -590,8 +599,11 @@ Would you like to upgrade your currently installed version?</value>
   <data name="Menu.AllFiles" xml:space="preserve">
     <value>All files</value>
   </data>
-  <data name="Menu.AlreadyRunning" xml:space="preserve">
-    <value>Bloxstrap is currently running, likely as a background Roblox process. Please note that not all your changes will immediately apply until you close all currently open Roblox instances.</value>
+  <data name="Menu.AlreadyRunning.Caption" xml:space="preserve">
+    <value>Please note that not all your changes will immediately apply until you close all currently open Roblox instances.</value>
+  </data>
+  <data name="Menu.AlreadyRunning.Title" xml:space="preserve">
+    <value>Bloxstrap is already running</value>
   </data>
   <data name="Menu.Appearance.Bootstrapper.Description" xml:space="preserve">
     <value>You can make it look different, retro, or even just like Roblox.</value>
@@ -712,6 +724,12 @@ Would you like to upgrade your currently installed version?</value>
   </data>
   <data name="Menu.FastFlagEditor.Description" xml:space="preserve">
     <value>Manage your own FastFlags. Double click a column to edit.</value>
+  </data>
+  <data name="Menu.FastFlagEditor.ExportJson" xml:space="preserve">
+    <value>Export JSON</value>
+  </data>
+  <data name="Menu.FastFlagEditor.JsonCopiedToClipboard" xml:space="preserve">
+    <value>Copied JSON to clipboard.</value>
   </data>
   <data name="Menu.FastFlagEditor.Search" xml:space="preserve">
     <value>Search</value>
@@ -909,6 +927,12 @@ Selecting 'No' will ignore this warning and continue installation.</value>
   <data name="Menu.Integrations.Description" xml:space="preserve">
     <value>Configure quick and easy ways to improve the Roblox gameplay experience.</value>
   </data>
+  <data name="Menu.Integrations.DesktopApp.Description" xml:space="preserve">
+    <value>Roblox will fully close when you leave a game instead of dropping you back into the app.</value>
+  </data>
+  <data name="Menu.Integrations.DesktopApp.Title" xml:space="preserve">
+    <value>Don't exit to desktop app</value>
+  </data>
   <data name="Menu.Integrations.EnableActivityTracking.Description" xml:space="preserve">
     <value>Allows for Bloxstrap to detect what Roblox game you're playing. Certain features may require this.</value>
   </data>
@@ -949,6 +973,9 @@ Selecting 'No' will ignore this warning and continue installation.</value>
   <data name="Menu.Mods.Misc.CustomFont.Description" xml:space="preserve">
     <value>Forces every in-game font to be a font that you choose.</value>
   </data>
+  <data name="Menu.Mods.Misc.CustomFont.Invalid" xml:space="preserve">
+    <value>The file you have chosen does not appear to be a valid font file.</value>
+  </data>
   <data name="Menu.Mods.Misc.CustomFont.Remove" xml:space="preserve">
     <value>Remove applied font</value>
   </data>
@@ -969,12 +996,6 @@ Selecting 'No' will ignore this warning and continue installation.</value>
   </data>
   <data name="Menu.Mods.OpenModsFolder.Title" xml:space="preserve">
     <value>Open Mods Folder</value>
-  </data>
-  <data name="Menu.Mods.Presets.DisableDesktopApp.Description" xml:space="preserve">
-    <value>Stops the desktop app from showing, especially when you leave a game.</value>
-  </data>
-  <data name="Menu.Mods.Presets.DisableDesktopApp.Title" xml:space="preserve">
-    <value>Disable desktop app</value>
   </data>
   <data name="Menu.Mods.Presets.EmojiType.Description" xml:space="preserve">
     <value>Choose which type of emoji should Roblox use.</value>
@@ -1026,6 +1047,12 @@ Selecting 'No' will ignore this warning and continue installation.</value>
   </data>
   <data name="Menu.Save" xml:space="preserve">
     <value>Save</value>
+  </data>
+  <data name="Menu.SettingsSaved.Message" xml:space="preserve">
+    <value>Changes will take effect the next time you launch Roblox.</value>
+  </data>
+  <data name="Menu.SettingsSaved.Title" xml:space="preserve">
+    <value>Settings saved!</value>
   </data>
   <data name="Menu.Title" xml:space="preserve">
     <value>Bloxstrap Menu</value>
