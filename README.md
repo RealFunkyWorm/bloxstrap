@@ -59,3 +59,5 @@ Bloxstrap also only runs whenever necessary, so it doesn't stay running in the b
 * taskmanager ([@Mantaraix](https://github.com/Mantaraix)) - Helping with designing the new menu look and layout.
 * [@Extravi](https://github.com/Extravi) - Allowing their presets to be bundled with Bloxstrap, and helping with improving UX.
 * [@axstin](https://github.com/axstin) - Making [rbxfpsunlocker](https://github.com/axstin/rbxfpsunlocker), which was used for Bloxstrap's FPS unlocking up until v2.2.0.
+
+\ce{$&#x5C;unicode[goombafont; color:red;]{x0000}$}
