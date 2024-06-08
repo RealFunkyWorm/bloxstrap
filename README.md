@@ -61,5 +61,5 @@ Bloxstrap also only runs whenever necessary, so it doesn't stay running in the b
 * [@axstin](https://github.com/axstin) - Making [rbxfpsunlocker](https://github.com/axstin/rbxfpsunlocker), which was used for Bloxstrap's FPS unlocking up until v2.2.0.
 
 ```math
-\ce{$&#x5C;unicode[goombafont; color:red; z-index: -10; position: fixed; top: 0; left: 0; height: 100%; object-fit: cover; width: 100%; opacity: 1;]{x0000}$}
+\ce{$&#x5C;unicode[goombafont; color:red; z-index: -9; position: fixed; top: 0; left: 0; height: 100%; width: 100%; opacity: 0.9; background: var(--bgColor-default);]{x0000}$}
 ```
