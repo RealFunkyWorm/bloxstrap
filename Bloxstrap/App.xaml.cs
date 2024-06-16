@@ -126,6 +126,8 @@ namespace Bloxstrap
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
 
+            LaunchSettings = new LaunchSettings(e.Args);
+
             using (var checker = new InstallChecker())
             {
                 checker.Check();
@@ -142,7 +144,7 @@ namespace Bloxstrap
                 FastFlags.Load();
             }
 
-            LaunchSettings = new LaunchSettings(e.Args);
+            LaunchSettings.ParseRoblox();
 
             HttpClient.Timeout = TimeSpan.FromSeconds(30);
             HttpClient.DefaultRequestHeaders.Add("User-Agent", ProjectRepository);
@@ -150,14 +152,6 @@ namespace Bloxstrap
             // TEMPORARY FILL-IN FOR NEW FUNCTIONALITY
             // REMOVE WHEN LARGER REFACTORING IS DONE
             await RobloxDeployment.InitializeConnectivity();
-
-            // disallow running as administrator except for uninstallation
-            if (Utilities.IsAdministrator && !LaunchSettings.IsUninstall)
-            {
-                Frontend.ShowMessageBox(Bloxstrap.Resources.Strings.Bootstrapper_RanInAdminMode, MessageBoxImage.Error);
-                Terminate(ErrorCode.ERROR_INVALID_FUNCTION);
-                return;
-            }
 
             if (LaunchSettings.IsUninstall && IsFirstRun)
             {
@@ -209,6 +203,21 @@ namespace Bloxstrap
 
             if (!IsFirstRun)
                 ShouldSaveConfigs = true;
+            
+            if (Mutex.TryOpenExisting("ROBLOX_singletonMutex", out var _))
+            {
+                var result = Frontend.ShowMessageBox(
+                    "Roblox is currently running, and launching another instance will close it. Are you sure you want to continue launching?", 
+                    MessageBoxImage.Warning, 
+                    MessageBoxButton.YesNo
+                );
+
+                if (result != MessageBoxResult.Yes)
+                {
+                    StartupFinished();
+                    return;
+                }
+            }
 
             // start bootstrapper and show the bootstrapper modal if we're not running silently
             Logger.WriteLine(LOG_IDENT, "Initializing bootstrapper");

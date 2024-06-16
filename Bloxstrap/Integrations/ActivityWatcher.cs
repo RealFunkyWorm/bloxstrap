@@ -65,11 +65,6 @@
             //
             // we'll tail the log file continuously, monitoring for any log entries that we need to determine the current game activity
 
-            int delay = 1000;
-
-            if (App.Settings.Prop.PowerTools)
-                delay = 250;
-
             string logDirectory = Path.Combine(Paths.LocalAppData, "Roblox\\logs");
 
             if (!Directory.Exists(logDirectory))
@@ -118,7 +113,7 @@
                 string? log = await sr.ReadLineAsync();
 
                 if (string.IsNullOrEmpty(log))
-                    logUpdatedEvent.WaitOne(delay);
+                    logUpdatedEvent.WaitOne(1000);
                 else
                     ExamineLogEntry(log);
             }
@@ -299,17 +294,17 @@
                 var ipInfo = await Http.GetJson<IPInfoResponse>($"https://ipinfo.io/{ActivityMachineAddress}/json");
 
                 if (ipInfo is null)
-                    return $"N/A ({Resources.Strings.ActivityTracker_LookupFailed})";
+                    return $"? ({Resources.Strings.ActivityTracker_LookupFailed})";
 
                 if (string.IsNullOrEmpty(ipInfo.Country))
-                    location = "N/A";
+                    location = "?";
                 else if (ipInfo.City == ipInfo.Region)
                     location = $"{ipInfo.Region}, {ipInfo.Country}";
                 else
                     location = $"{ipInfo.City}, {ipInfo.Region}, {ipInfo.Country}";
 
                 if (!ActivityInGame)
-                    return $"N/A ({Resources.Strings.ActivityTracker_LeftGame})";
+                    return $"? ({Resources.Strings.ActivityTracker_LeftGame})";
 
                 GeolocationCache[ActivityMachineAddress] = location;
 
@@ -320,7 +315,7 @@
                 App.Logger.WriteLine(LOG_IDENT, $"Failed to get server location for {ActivityMachineAddress}");
                 App.Logger.WriteException(LOG_IDENT, ex);
 
-                return $"N/A ({Resources.Strings.ActivityTracker_LookupFailed})";
+                return $"? ({Resources.Strings.ActivityTracker_LookupFailed})";
             }
         }
 

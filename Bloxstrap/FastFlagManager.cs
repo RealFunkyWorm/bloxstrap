@@ -17,13 +17,15 @@ namespace Bloxstrap
         public static IReadOnlyDictionary<string, string> PresetFlags = new Dictionary<string, string>
         {
             { "Network.Log", "FLogNetwork" },
-            
+
+#if DEBUG
             { "HTTP.Log", "DFLogHttpTraceLight" },
 
             { "HTTP.Proxy.Enable", "DFFlagDebugEnableHttpProxy" },
             { "HTTP.Proxy.Address.1", "DFStringDebugPlayerHttpProxyUrl" },
             { "HTTP.Proxy.Address.2", "DFStringHttpCurlProxyHostAndPort" },
             { "HTTP.Proxy.Address.3", "DFStringHttpCurlProxyHostAndPortForExternalUrl" },
+#endif
 
             { "Rendering.Framerate", "DFIntTaskSchedulerTargetFps" },
             { "Rendering.ManualFullscreen", "FFlagHandleAltEnterFullscreenManually" },
@@ -43,7 +45,9 @@ namespace Bloxstrap
             { "Rendering.Lighting.Future", "FFlagDebugForceFutureIsBrightPhase3" },
 
             { "UI.Hide", "DFIntCanHideGuiGroupId" },
+#if DEBUG
             { "UI.FlagState", "FStringDebugShowFlagState" },
+#endif
 
             { "UI.Menu.GraphicsSlider", "FFlagFixGraphicsQuality" },
             
@@ -241,23 +245,6 @@ namespace Bloxstrap
             string? val = GetPreset("UI.Menu.Style.EnableV4.1");
             if (GetPreset("UI.Menu.Style.EnableV4.2") != val)
                 SetPreset("UI.Menu.Style.EnableV4.2", val);
-
-            if (GetPreset("Rendering.Framerate") is not null)
-                return;
-
-            // set it to be the framerate of the primary display by default
-
-            var screen = Screen.AllScreens.Where(x => x.Primary).Single();
-            var devmode = new DEVMODEW();
-
-            PInvoke.EnumDisplaySettings(screen.DeviceName, ENUM_DISPLAY_SETTINGS_MODE.ENUM_CURRENT_SETTINGS, ref devmode);
-
-            uint framerate = devmode.dmDisplayFrequency;
-
-            if (framerate <= 100)
-                framerate *= 2;
-
-            SetPreset("Rendering.Framerate", framerate);
         }
     }
 }

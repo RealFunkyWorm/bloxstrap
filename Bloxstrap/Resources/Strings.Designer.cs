@@ -88,16 +88,6 @@ namespace Bloxstrap.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The channel you&apos;re currently on ({0}) is out of date, and appears to no longer be receiving updates.
-        ///Would you like to switch to the default channel ({1})?.
-        /// </summary>
-        public static string Bootstrapper_ChannelOutOfDate {
-            get {
-                return ResourceManager.GetString("Bootstrapper.ChannelOutOfDate", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to It&apos;s possible that something is preventing Bloxstrap from connecting to the internet. Please check and try again..
         /// </summary>
         public static string Bootstrapper_Connectivity_Preventing {
@@ -121,15 +111,6 @@ namespace Bloxstrap.Resources {
         public static string Bootstrapper_Connectivity_TimedOut {
             get {
                 return ResourceManager.GetString("Bootstrapper.Connectivity.TimedOut", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Roblox was launched via a deeplink, however the desktop app is required for deeplink launching to work. Because you&apos;ve opted to disable the desktop app, it will temporarily be re-enabled for this launch only..
-        /// </summary>
-        public static string Bootstrapper_DeeplinkTempEnabled {
-            get {
-                return ResourceManager.GetString("Bootstrapper.DeeplinkTempEnabled", resourceCulture);
             }
         }
         
@@ -168,15 +149,6 @@ namespace Bloxstrap.Resources {
         public static string Bootstrapper_NotEnoughSpace {
             get {
                 return ResourceManager.GetString("Bootstrapper.NotEnoughSpace", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Bloxstrap does not support running in administrator mode. Relaunch or reinstall Bloxstrap with lower privileges..
-        /// </summary>
-        public static string Bootstrapper_RanInAdminMode {
-            get {
-                return ResourceManager.GetString("Bootstrapper.RanInAdminMode", resourceCulture);
             }
         }
         
@@ -469,6 +441,15 @@ namespace Bloxstrap.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Warning.
+        /// </summary>
+        public static string Common_Warning {
+            get {
+                return ResourceManager.GetString("Common.Warning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Yes.
         /// </summary>
         public static string Common_Yes {
@@ -505,56 +486,11 @@ namespace Bloxstrap.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Keep on top.
+        ///   Looks up a localized string similar to Open log file.
         /// </summary>
-        public static string ContextMenu_LogTracer_KeepOnTop {
+        public static string ContextMenu_OpenLogFile {
             get {
-                return ResourceManager.GetString("ContextMenu.LogTracer.KeepOnTop", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Scroll to end.
-        /// </summary>
-        public static string ContextMenu_LogTracer_ScrollToEnd {
-            get {
-                return ResourceManager.GetString("ContextMenu.LogTracer.ScrollToEnd", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Text wrapping.
-        /// </summary>
-        public static string ContextMenu_LogTracer_TextWrapping {
-            get {
-                return ResourceManager.GetString("ContextMenu.LogTracer.TextWrapping", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Log tracer.
-        /// </summary>
-        public static string ContextMenu_LogTracer_Title {
-            get {
-                return ResourceManager.GetString("ContextMenu.LogTracer.Title", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Tracing {0}.
-        /// </summary>
-        public static string ContextMenu_LogTracer_TracingFormat {
-            get {
-                return ResourceManager.GetString("ContextMenu.LogTracer.TracingFormat", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Open log tracer.
-        /// </summary>
-        public static string ContextMenu_OpenLogTracer {
-            get {
-                return ResourceManager.GetString("ContextMenu.OpenLogTracer", resourceCulture);
+                return ResourceManager.GetString("ContextMenu.OpenLogFile", resourceCulture);
             }
         }
         
@@ -604,6 +540,25 @@ namespace Bloxstrap.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Located at {0}
+        ///Click for more information.
+        /// </summary>
+        public static string ContextMenu_ServerInformation_Notification_Text {
+            get {
+                return ResourceManager.GetString("ContextMenu.ServerInformation.Notification.Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Connected to {0} server.
+        /// </summary>
+        public static string ContextMenu_ServerInformation_Notification_Title {
+            get {
+                return ResourceManager.GetString("ContextMenu.ServerInformation.Notification.Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Server information.
         /// </summary>
         public static string ContextMenu_ServerInformation_Title {
@@ -631,15 +586,6 @@ namespace Bloxstrap.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to UDMUX proxied.
-        /// </summary>
-        public static string ContextMenu_ServerInformation_UdmuxProxied {
-            get {
-                return ResourceManager.GetString("ContextMenu.ServerInformation.UdmuxProxied", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Add FastFlag.
         /// </summary>
         public static string Dialog_AddFastFlag_Title {
@@ -649,7 +595,9 @@ namespace Bloxstrap.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Paste in your JSON here....
+        ///   Looks up a localized string similar to {
+        ///    &quot;FFlagDebugDisplayFPS&quot;: &quot;True&quot;
+        ///}.
         /// </summary>
         public static string Dialog_BulkAddFastFlag_Paste {
             get {
@@ -838,6 +786,24 @@ namespace Bloxstrap.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Fluent (Classic).
+        /// </summary>
+        public static string Enums_BootstrapperStyle_ClassicFluentDialog {
+            get {
+                return ResourceManager.GetString("Enums.BootstrapperStyle.ClassicFluentDialog", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fluent (Glass).
+        /// </summary>
+        public static string Enums_BootstrapperStyle_FluentAeroDialog {
+            get {
+                return ResourceManager.GetString("Enums.BootstrapperStyle.FluentAeroDialog", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Fluent.
         /// </summary>
         public static string Enums_BootstrapperStyle_FluentDialog {
@@ -870,24 +836,6 @@ namespace Bloxstrap.Resources {
         public static string Enums_BootstrapperStyle_ProgressDialog {
             get {
                 return ResourceManager.GetString("Enums.BootstrapperStyle.ProgressDialog", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Fluent Progress (Aero).
-        /// </summary>
-        public static string Enums_BootstrapperStyle_ProgressFluentAeroDialog {
-            get {
-                return ResourceManager.GetString("Enums.BootstrapperStyle.ProgressFluentAeroDialog", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Fluent Progress.
-        /// </summary>
-        public static string Enums_BootstrapperStyle_ProgressFluentDialog {
-            get {
-                return ResourceManager.GetString("Enums.BootstrapperStyle.ProgressFluentDialog", resourceCulture);
             }
         }
         
@@ -1144,7 +1092,7 @@ namespace Bloxstrap.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to D3D10.
+        ///   Looks up a localized string similar to Direct3D 10.
         /// </summary>
         public static string Enums_FlagPresets_RenderingMode_D3D10 {
             get {
@@ -1153,7 +1101,7 @@ namespace Bloxstrap.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to D3D11.
+        ///   Looks up a localized string similar to Direct3D 11.
         /// </summary>
         public static string Enums_FlagPresets_RenderingMode_D3D11 {
             get {
@@ -1381,6 +1329,15 @@ namespace Bloxstrap.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Special Thanks.
+        /// </summary>
+        public static string Menu_About_Contributors_SpecialThanks {
+            get {
+                return ResourceManager.GetString("Menu.About.Contributors.SpecialThanks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Translations.
         /// </summary>
         public static string Menu_About_Contributors_Translations {
@@ -1390,20 +1347,11 @@ namespace Bloxstrap.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to An open-source, feature-packed alternative bootstrapper for Roblox.
+        ///   Looks up a localized string similar to An alternative bootstrapper for Roblox with a bunch of extra features..
         /// </summary>
-        public static string Menu_About_Description_1 {
+        public static string Menu_About_Description {
             get {
-                return ResourceManager.GetString("Menu.About.Description.1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Developed by pizzaboxer - if you like this, please consider leaving a star on GitHub!.
-        /// </summary>
-        public static string Menu_About_Description_2 {
-            get {
-                return ResourceManager.GetString("Menu.About.Description.2", resourceCulture);
+                return ResourceManager.GetString("Menu.About.Description", resourceCulture);
             }
         }
         
@@ -1440,6 +1388,24 @@ namespace Bloxstrap.Resources {
         public static string Menu_About_Licenses {
             get {
                 return ResourceManager.GetString("Menu.About.Licenses", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to BSD 2-Clause License.
+        /// </summary>
+        public static string Menu_About_Licenses_BSD2 {
+            get {
+                return ResourceManager.GetString("Menu.About.Licenses.BSD2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MIT License.
+        /// </summary>
+        public static string Menu_About_Licenses_MIT {
+            get {
+                return ResourceManager.GetString("Menu.About.Licenses.MIT", resourceCulture);
             }
         }
         
@@ -1588,15 +1554,6 @@ namespace Bloxstrap.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Dark theme does not apply to Legacy or Vista styles..
-        /// </summary>
-        public static string Menu_Appearance_Global_Theme_Description {
-            get {
-                return ResourceManager.GetString("Menu.Appearance.Global.Theme.Description", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Global Theme.
         /// </summary>
         public static string Menu_Appearance_Global_Theme_Title {
@@ -1660,24 +1617,6 @@ namespace Bloxstrap.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Roblox or Bloxstrap may try to change your preferred channel..
-        /// </summary>
-        public static string Menu_Behaviour_AutoChannelChange_Description {
-            get {
-                return ResourceManager.GetString("Menu.Behaviour.AutoChannelChange.Description", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Automatic channel change action.
-        /// </summary>
-        public static string Menu_Behaviour_AutoChannelChange_Title {
-            get {
-                return ResourceManager.GetString("Menu.Behaviour.AutoChannelChange.Title", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Bloxstrap will automatically check and update itself when launching Roblox..
         /// </summary>
         public static string Menu_Behaviour_AutoUpdate_Description {
@@ -1692,87 +1631,6 @@ namespace Bloxstrap.Resources {
         public static string Menu_Behaviour_AutoUpdate_Title {
             get {
                 return ResourceManager.GetString("Menu.Behaviour.AutoUpdate.Title", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Deployed.
-        /// </summary>
-        public static string Menu_Behaviour_Channel_Deployed {
-            get {
-                return ResourceManager.GetString("Menu.Behaviour.Channel.Deployed", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Choose which deployment channel Roblox should be downloaded from..
-        /// </summary>
-        public static string Menu_Behaviour_Channel_Description {
-            get {
-                return ResourceManager.GetString("Menu.Behaviour.Channel.Description", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The specified channel name does not exist..
-        /// </summary>
-        public static string Menu_Behaviour_Channel_DoesNotExist {
-            get {
-                return ResourceManager.GetString("Menu.Behaviour.Channel.DoesNotExist", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Failed to fetch information!.
-        /// </summary>
-        public static string Menu_Behaviour_Channel_FetchFailed {
-            get {
-                return ResourceManager.GetString("Menu.Behaviour.Channel.FetchFailed", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Fetching latest deploy info, please wait....
-        /// </summary>
-        public static string Menu_Behaviour_Channel_Fetching {
-            get {
-                return ResourceManager.GetString("Menu.Behaviour.Channel.Fetching", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to This channel is out of date, and is likely no longer being updated. Please use another channel..
-        /// </summary>
-        public static string Menu_Behaviour_Channel_Outdated {
-            get {
-                return ResourceManager.GetString("Menu.Behaviour.Channel.Outdated", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Channel.
-        /// </summary>
-        public static string Menu_Behaviour_Channel_Title {
-            get {
-                return ResourceManager.GetString("Menu.Behaviour.Channel.Title", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Version.
-        /// </summary>
-        public static string Menu_Behaviour_Channel_Version {
-            get {
-                return ResourceManager.GetString("Menu.Behaviour.Channel.Version", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Version GUID.
-        /// </summary>
-        public static string Menu_Behaviour_Channel_VersionGuid {
-            get {
-                return ResourceManager.GetString("Menu.Behaviour.Channel.VersionGuid", resourceCulture);
             }
         }
         
@@ -1840,11 +1698,50 @@ namespace Bloxstrap.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to An entry for this flag name already exists..
+        /// </summary>
+        public static string Menu_FastFlagEditor_AlreadyExists {
+            get {
+                return ResourceManager.GetString("Menu.FastFlagEditor.AlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Back.
         /// </summary>
         public static string Menu_FastFlagEditor_Back {
             get {
                 return ResourceManager.GetString("Menu.FastFlagEditor.Back", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Misusing this can lead to instability or unexpected things happening..
+        /// </summary>
+        public static string Menu_FastFlagEditor_BannerText {
+            get {
+                return ResourceManager.GetString("Menu.FastFlagEditor.BannerText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use with caution..
+        /// </summary>
+        public static string Menu_FastFlagEditor_BannerTitle {
+            get {
+                return ResourceManager.GetString("Menu.FastFlagEditor.BannerTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Some of the flags you are attempting to import already have set values. Would you like to overwrite their current values with the ones defined in the import?
+        ///
+        ///There are {0} conflicting flag definitions:
+        ///{1}.
+        /// </summary>
+        public static string Menu_FastFlagEditor_ConflictingImport {
+            get {
+                return ResourceManager.GetString("Menu.FastFlagEditor.ConflictingImport", resourceCulture);
             }
         }
         
@@ -1876,11 +1773,52 @@ namespace Bloxstrap.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Copied JSON to clipboard..
+        ///   Looks up a localized string similar to The name of this flag is not valid as names can only contain letters, numbers, and underscores.
+        /// </summary>
+        public static string Menu_FastFlagEditor_InvalidCharacter {
+            get {
+                return ResourceManager.GetString("Menu.FastFlagEditor.InvalidCharacter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The JSON you&apos;ve entered does not appear to be valid. Please double check it and try again.
+        ///
+        ///More information:
+        ///{0}.
+        /// </summary>
+        public static string Menu_FastFlagEditor_InvalidJSON {
+            get {
+                return ResourceManager.GetString("Menu.FastFlagEditor.InvalidJSON", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The name of this flag is not valid as names must start with FFlag, DFInt, etc.
+        /// </summary>
+        public static string Menu_FastFlagEditor_InvalidPrefix {
+            get {
+                return ResourceManager.GetString("Menu.FastFlagEditor.InvalidPrefix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copied to clipboard..
         /// </summary>
         public static string Menu_FastFlagEditor_JsonCopiedToClipboard {
             get {
                 return ResourceManager.GetString("Menu.FastFlagEditor.JsonCopiedToClipboard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You appear to be importing a very large configuration. You should only be importing configurations that you fully understand. Do NOT blindly paste in configurations made by other people. If you continue, you will very likely end up with stability issues and encounter unexpected changes.
+        ///
+        ///Are you sure you want to continue?.
+        /// </summary>
+        public static string Menu_FastFlagEditor_LargeConfig {
+            get {
+                return ResourceManager.GetString("Menu.FastFlagEditor.LargeConfig", resourceCulture);
             }
         }
         
@@ -1912,6 +1850,44 @@ namespace Bloxstrap.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Go back.
+        /// </summary>
+        public static string Menu_FastFlagEditor_Warning_Back {
+            get {
+                return ResourceManager.GetString("Menu.FastFlagEditor.Warning.Back", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to I know what I&apos;m doing.
+        /// </summary>
+        public static string Menu_FastFlagEditor_Warning_Continue {
+            get {
+                return ResourceManager.GetString("Menu.FastFlagEditor.Warning.Continue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you know what you are doing?.
+        /// </summary>
+        public static string Menu_FastFlagEditor_Warning_Header {
+            get {
+                return ResourceManager.GetString("Menu.FastFlagEditor.Warning.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fast Flags are extremely powerful, being that they are intended to only be used by Roblox engineers. While they can be very useful, manually configuring them can cause serious issues with stability and functionality. Do NOT use the editor if you are unsure of what you are doing.
+        ///
+        ///Do NOT use this to import large &quot;flag lists&quot; made by other people that promise to improve performance or such. They are subject to the aforementioned issues, and they will cause problems for you since you will not be fully aware of [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string Menu_FastFlagEditor_Warning_Text {
+            get {
+                return ResourceManager.GetString("Menu.FastFlagEditor.Warning.Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Control how specific Roblox engine parameters and features are configured..
         /// </summary>
         public static string Menu_FastFlags_Description {
@@ -1921,7 +1897,7 @@ namespace Bloxstrap.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Manage your own FastFlags..
+        ///   Looks up a localized string similar to Manage your own Fast Flags. Use with caution..
         /// </summary>
         public static string Menu_FastFlags_Editor_Description {
             get {
@@ -1930,7 +1906,7 @@ namespace Bloxstrap.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Learn more about FastFlags..
+        ///   Looks up a localized string similar to Learn more about Fast Flags, what these presets do, and how to use them..
         /// </summary>
         public static string Menu_FastFlags_Help_Description {
             get {
@@ -2137,15 +2113,6 @@ namespace Bloxstrap.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to More information on this preset.
-        /// </summary>
-        public static string Menu_FastFlags_Presets_MoreInfo {
-            get {
-                return ResourceManager.GetString("Menu.FastFlags.Presets.MoreInfo", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Choose what renderer Roblox should use. VR requires Direct3D/Automatic..
         /// </summary>
         public static string Menu_FastFlags_Presets_RenderingMode_Description {
@@ -2341,24 +2308,6 @@ namespace Bloxstrap.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Allows for having more than one Roblox game client instance open simultaneously..
-        /// </summary>
-        public static string Menu_Integrations_AllowMultipleInstances_Description {
-            get {
-                return ResourceManager.GetString("Menu.Integrations.AllowMultipleInstances.Description", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Allow multi-instance launching.
-        /// </summary>
-        public static string Menu_Integrations_AllowMultipleInstances_Title {
-            get {
-                return ResourceManager.GetString("Menu.Integrations.AllowMultipleInstances.Title", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Application Location.
         /// </summary>
         public static string Menu_Integrations_Custom_AppLocation {
@@ -2481,15 +2430,6 @@ namespace Bloxstrap.Resources {
         public static string Menu_Integrations_EnableActivityTracking_Title {
             get {
                 return ResourceManager.GetString("Menu.Integrations.EnableActivityTracking.Title", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to More information on this integration.
-        /// </summary>
-        public static string Menu_Integrations_MoreInfo {
-            get {
-                return ResourceManager.GetString("Menu.Integrations.MoreInfo", resourceCulture);
             }
         }
         
@@ -2832,17 +2772,6 @@ namespace Bloxstrap.Resources {
         public static string Menu_Title {
             get {
                 return ResourceManager.GetString("Menu.Title", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Roblox is attempting to set your channel to {0}, however your current preferred channel is {1}.
-        ///
-        ///Would you like to switch your preferred channel to {0}?.
-        /// </summary>
-        public static string ProtocolHandler_RobloxSwitchedChannel {
-            get {
-                return ResourceManager.GetString("ProtocolHandler.RobloxSwitchedChannel", resourceCulture);
             }
         }
     }

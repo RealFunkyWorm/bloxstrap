@@ -1,4 +1,8 @@
+> [!CAUTION]
+> This is the only official place to download Bloxstrap. Any other websites offering downloads or claiming to be us are not controlled by us.
+
 # <img src="https://github.com/pizzaboxer/bloxstrap/raw/main/Images/Bloxstrap.png" width="48"/> Bloxstrap
+
 [![License](https://img.shields.io/github/license/pizzaboxer/bloxstrap)](https://github.com/pizzaboxer/bloxstrap/blob/main/LICENSE)
 [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/pizzaboxer/bloxstrap/ci.yml?branch=main&label=builds)](https://github.com/pizzaboxer/bloxstrap/actions)
 [![Downloads](https://img.shields.io/github/downloads/pizzaboxer/bloxstrap/latest/total?color=981bfe)](https://github.com/pizzaboxer/bloxstrap/releases)
@@ -6,9 +10,9 @@
 [![Discord](https://img.shields.io/discord/1099468797410283540?logo=discord&logoColor=white&label=discord&color=4d3dff)](https://discord.gg/nKjV3mGq6R)
 [![lol](https://img.shields.io/badge/mom%20made-pizza%20rolls-orange)](https://media.tenor.com/FIkSGbGycmAAAAAd/manly-roblox.gif)
 
-An open-source, alternative bootstrapper for Roblox. 
+This is a drop-in replacement for the standard Roblox bootstrapper, providing additional useful features and improvements. Nothing more, nothing less.
 
-This is a drop-in replacement for the standard Roblox bootstrapper, providing additional useful features and improvements. This does not touch or modify the game client itself, it's just a launcher! So don't worry, there's no risk of being banned for using this.
+This does not touch or modify the game client itself, it's really just a launcher. So don't worry, there's [no risk of being banned](https://github.com/pizzaboxer/bloxstrap/wiki/Why-it%27s-not-reasonably-possible-for-you-to-be-banned-by-Bloxstrap) for using this.
 
 Running into a problem or need help with something? [Check out the Wiki](https://github.com/pizzaboxer/bloxstrap/wiki). If you can't find anything, or would like to suggest something, please [submit an issue](https://github.com/pizzaboxer/bloxstrap/issues) or report it in our [Discord server](https://discord.gg/nKjV3mGq6R).
  
@@ -32,14 +36,14 @@ Once installed, Bloxstrap is added to your Start Menu, where you can access the 
 Here's some of the features that Bloxstrap provides over the stock Roblox bootstrapper:
 
 * Persistent file modifications, includes re-adding the old death sound!
-* Painless and seamless support for Discord Rich Presence - no auth cookie needed!
+* Painless and seamless support for Discord Rich Presence
 * A customizable launcher look
 * Lets you see what region your current server is located in
-* Lets you have multiple Roblox game instances open simultaneously
 
 All the available features are browsable through the Bloxstrap menu.
 
-Bloxstrap also only runs whenever necessary, so it doesn't stay running in the background when you're not playing.
+> [!WARNING]
+> Multi-instance launching will be removed in a future version of Bloxstrap. [Read more](https://github.com/pizzaboxer/bloxstrap/wiki/Plans-to-remove-multi%E2%80%90instance-launching-from-Bloxstrap)
 
 ## Screenshots
 
@@ -48,11 +52,3 @@ Bloxstrap also only runs whenever necessary, so it doesn't stay running in the b
     <img src="https://github.com/pizzaboxer/bloxstrap/assets/41478239/e08cdf28-4f99-46b5-99f2-5c338aac86db" width="390" />
     <img src="https://github.com/pizzaboxer/bloxstrap/assets/41478239/7ba35223-9115-401f-bbc1-d15e9c5fd79e" width="232" />
 <p>
-
-## Special thanks
-* [@MaximumADHD](https://github.com/MaximumADHD) - Initially inspiring the idea for Bloxstrap with [Roblox Studio Mod Manager](https://github.com/MaximumADHD/Roblox-Studio-Mod-Manager).
-* [Multako](https://www.roblox.com/users/2485612194/profile) - Designing the Bloxstrap logo.
-* [@1011025m](https://github.com/1011025m) - Providing a method for disabling the Roblox desktop app.
-* taskmanager ([@Mantaraix](https://github.com/Mantaraix)) - Helping with designing the new menu look and layout.
-* [@Extravi](https://github.com/Extravi) - Allowing their presets to be bundled with Bloxstrap, and helping with improving UX.
-* [@axstin](https://github.com/axstin) - Making [rbxfpsunlocker](https://github.com/axstin/rbxfpsunlocker), which was used for Bloxstrap's FPS unlocking up until v2.2.0.
